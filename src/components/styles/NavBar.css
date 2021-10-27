@@ -1,0 +1,70 @@
+nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 30px;
+}
+
+.links {
+  display: flex;
+  position: relative;
+  height: 100%;
+  align-items: center;
+}
+
+nav a {
+  position: relative;
+  margin: 0 20px;
+  text-decoration: none;
+}
+
+.slider {
+  height: 5px;
+  position: absolute;
+  bottom: 10px;
+  left: 5%;
+  border-radius: 10px;
+  background-color: red;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 130px;
+  height: 100px;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.link > div {
+  border-radius: 2px;
+  position: absolute;
+  bottom: -10px;
+}
+
+.link-active > div {
+  height: 4px;
+  width: 0%;
+  animation: drawBorder 0.8s ease forwards;
+}
+
+@keyframes drawBorder {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.link-active > div {
+  background-size: 100% 2px;
+}
