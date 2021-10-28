@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: false
-      REACT_APP_API_URL: 'https://saratran.github.io/CryptoInfo/'
+      PUBLIC_URL: 'https://saratran.github.io/CryptoInfo/'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
