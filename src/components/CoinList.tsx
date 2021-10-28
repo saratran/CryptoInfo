@@ -1,67 +1,35 @@
 import {
-  CircularProgress,
   Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TablePagination,
   TableRow,
-  useTheme,
 } from "@mui/material";
-import clsx from "clsx";
 import { makeStyles } from "@mui/styles";
-import React, { FC, useEffect, useState } from "react";
-import AutoSizer from "react-virtualized-auto-sizer";
-import { FixedSizeList as List } from "react-window";
-
+import React, { FC } from "react";
 import "./styles/NavBar.css";
 
 const useStyles = makeStyles({
   root: {
-    // display: "block",
-    // flex: 1,
-    // height: 400,
     marginTop: 20,
     marginBottom: 20,
-    overflow: "auto",
   },
-  tableContainer: {
-    // height: "100%",
-    // width: "100%",
-  },
-  table: {
-    // height: "100%",
-    // width: "100%",
-  },
+  tableContainer: {},
+  table: {},
   list: {},
-  thead: {
-    position: "sticky",
-    top: 0,
-  },
-  tbody: {
-    // width: "100%",
-  },
+  thead: {},
+  tbody: {},
   row: {
-    // display: "flex",
-    // flexDirection: "row",
-    // flexWrap: "nowrap",
-    // alignItems: "center",
-    // boxSizing: "border-box",
-    // minWidth: "100%",
-    // width: "100%",
     height: 40,
   },
   headerRow: {},
-  cell: {
-    // display: "block",
-    // flexGrow: 0,
-    // flexShrink: 0,
+  headerCell: {
+    fontWeight: "bold",
   },
-  expandingCell: {
-    // flex: 1,
-  },
+  cell: {},
+  expandingCell: {},
   column: {},
 });
 
@@ -77,25 +45,42 @@ const CoinList: FC<CoinListProp> = ({ coins }) => {
       <TableContainer component={Paper}>
         <Table className={classes.table} stickyHeader>
           <TableHead className={classes.thead} component={Paper}>
-            <TableRow>
-              <TableCell width={4}>Rank</TableCell>
-              <TableCell align="left" width={200}>
+            <TableRow className={classes.headerRow}>
+              <TableCell className={classes.headerCell} width={4}>
+                Rank
+              </TableCell>
+              <TableCell
+                className={classes.headerCell}
+                align="left"
+                width={200}
+              >
                 Name
               </TableCell>
-              <TableCell align="left">Symbol</TableCell>
-              <TableCell align="right">Current Price (USD)</TableCell>
-              <TableCell align="right">Market Cap (USD)</TableCell>
-              <TableCell align="right">Circulating Supply</TableCell>
-              <TableCell align="right">%24h</TableCell>
+              <TableCell className={classes.headerCell} align="left">
+                Symbol
+              </TableCell>
+              <TableCell className={classes.headerCell} align="right">
+                Current Price (USD)
+              </TableCell>
+              <TableCell className={classes.headerCell} align="right">
+                Market Cap (USD)
+              </TableCell>
+              <TableCell className={classes.headerCell} align="right">
+                Circulating Supply
+              </TableCell>
+              <TableCell className={classes.headerCell} align="right">
+                %24h
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody className={classes.tbody}>
-            {coins.map((item) => (
-              <TableRow className={classes.row} key={item.symbol}>
+            {coins.map((item, i) => (
+              <TableRow className={classes.row} key={i}>
                 <TableCell
                   scope="row"
                   component="th"
                   style={{ height: "100%" }}
+                  className={classes.headerCell}
                 >
                   {item.market_cap_rank}
                 </TableCell>

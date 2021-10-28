@@ -20,29 +20,16 @@ axiosRetry(_axios.create(), {
   // retry on Network Error & 5xx responses
   retryCondition: axiosRetry.isRetryableError,
 });
-export const getCoinList = () => {
+export const getCoinSimple = () => {
   return coinGeckoApiBase.get("/coins/list");
 };
 
-export const getCoinData = (coinId: string) => {
-  return coinGeckoApiBase.get(`/coins/${coinId}`);
-};
-
-export const getCoinsData = (coinIds: string[]) => {
-  return coinGeckoApiBase.get(`/coins/markets`, {
-    params: {
-      ids: coinIds.join(","),
-      vs_currency: "usd",
-      order: "id_asc",
-    },
-  });
-};
-
-export const getCoins = (page: number = 1) => {
+export const getCoins = (page: number = 1, coinIds: Array<string> = []) => {
   return coinGeckoApiBase.get(`/coins/markets`, {
     params: {
       vs_currency: "usd",
       page,
+      ids: coinIds.join(","),
     },
   });
 };
