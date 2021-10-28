@@ -11,7 +11,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <BrowserRouter
-        basename={process.env.BASENAME ? "" : process.env.BASENAME}
+        basename={process.env.BASENAME ? process.env.BASENAME : "/"}
       >
         <Routes />
       </BrowserRouter>
