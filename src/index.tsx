@@ -10,7 +10,9 @@ require("dotenv").config();
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter
+        basename={process.env.BASENAME ? "" : process.env.BASENAME}
+      >
         <Routes />
       </BrowserRouter>
     </ThemeProvider>
