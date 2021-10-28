@@ -22,7 +22,7 @@ jobs:
     env:
       CI: false
       PUBLIC_URL: "https://saratran.github.io/CryptoInfo"
-      BASENAME: "CryptoInfo"
+      BASENAME: "/CryptoInfo"
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
