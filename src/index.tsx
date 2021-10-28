@@ -5,11 +5,12 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import Routes from "./routes";
 import { theme } from "./theme";
+require("dotenv").config();
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes />
       </BrowserRouter>
     </ThemeProvider>
