@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "https://saratran.github.io/CryptoInfo/static/css/main.da91c98b.chunk.css",
-    "main.js": "https://saratran.github.io/CryptoInfo/static/js/main.3748c26a.chunk.js",
-    "main.js.map": "https://saratran.github.io/CryptoInfo/static/js/main.3748c26a.chunk.js.map",
+    "main.js": "https://saratran.github.io/CryptoInfo/static/js/main.15d46908.chunk.js",
+    "main.js.map": "https://saratran.github.io/CryptoInfo/static/js/main.15d46908.chunk.js.map",
     "runtime-main.js": "https://saratran.github.io/CryptoInfo/static/js/runtime-main.661bb2ba.js",
     "runtime-main.js.map": "https://saratran.github.io/CryptoInfo/static/js/runtime-main.661bb2ba.js.map",
     "static/js/2.ff13d5ef.chunk.js": "https://saratran.github.io/CryptoInfo/static/js/2.ff13d5ef.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.661bb2ba.js",
     "static/js/2.ff13d5ef.chunk.js",
     "static/css/main.da91c98b.chunk.css",
-    "static/js/main.3748c26a.chunk.js"
+    "static/js/main.15d46908.chunk.js"
   ]
 }
