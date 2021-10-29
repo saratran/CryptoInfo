@@ -1,16 +1,13 @@
 import FilterListIcon from "@mui/icons-material/FilterList";
 import {
-  autocompleteClasses,
   Button,
   CircularProgress,
   Collapse,
   Paper,
-  Popper,
   Typography,
-  useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { styled } from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 import React, { FC, useEffect, useState } from "react";
 import { ListChildComponentProps, VariableSizeList } from "react-window";
 import { getCoins, getCoinSimple } from "../api/CoinGeckoApi";
@@ -19,8 +16,27 @@ import CoinList from "../components/CoinList";
 import NavBar from "../components/NavBar";
 import "./styles/Home.css";
 
+const useStyles = makeStyles({
+  loadingIcon: {
+    marginTop: 0,
+    marginBottom: 0,
+    marginLeft: "auto",
+    marginRight: "auto",
+    display: "block",
+  },
+  buttonMore: {
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: "auto",
+    marginRight: "auto",
+    display: "block",
+  },
+  buttonReturn: { marginTop: 10, marginBottom: 10, float: "right" },
+});
+
 const Home: FC = () => {
   const theme = useTheme();
+  const classes = useStyles();
   const [coins, setCoins] = useState<Array<any>>([]);
   const [isLoadingCoins, setIsLoadingCoins] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
@@ -106,37 +122,22 @@ const Home: FC = () => {
         </Collapse>
         <CoinList coins={coins} />
         {isLoadingCoins ? (
-          <CircularProgress
-            color="secondary"
-            style={{
-              marginTop: 0,
-              marginBottom: 0,
-              marginLeft: "auto",
-              marginRight: "auto",
-              display: "block",
-            }}
-          />
+          <CircularProgress color="secondary" className={classes.loadingIcon} />
         ) : (
           <Button
+            className={classes.buttonMore}
             variant="contained"
             color="primary"
             onClick={handleClickMore}
-            style={{
-              marginTop: 10,
-              marginBottom: 10,
-              marginLeft: "auto",
-              marginRight: "auto",
-              display: "block",
-            }}
           >
             Load more
           </Button>
         )}
         <Button
+          className={classes.buttonReturn}
           variant="outlined"
           color="primary"
           onClick={handleReturnTop}
-          style={{ marginTop: 10, marginBottom: 10, float: "right" }}
         >
           {"<- Return to top 100"}
         </Button>
@@ -178,74 +179,5 @@ function useResetCache(data: any) {
   }, [data]);
   return ref;
 }
-
-// Adapter for react-window
-const ListboxComponent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLElement>
->(function ListboxComponent(props, ref) {
-  const { children, ...other } = props;
-  const itemData: React.ReactChild[] = [];
-  (children as React.ReactChild[]).forEach(
-    (item: React.ReactChild & { children?: React.ReactChild[] }) => {
-      itemData.push(item);
-      itemData.push(...(item.children || []));
-    }
-  );
-
-  const theme = useTheme();
-  const smUp = useMediaQuery(theme.breakpoints.up("sm"), {
-    noSsr: true,
-  });
-  const itemCount = itemData.length;
-  const itemSize = smUp ? 36 : 48;
-
-  const getChildSize = (child: React.ReactChild) => {
-    if (child.hasOwnProperty("group")) {
-      return 48;
-    }
-
-    return itemSize;
-  };
-
-  const getHeight = () => {
-    if (itemCount > 8) {
-      return 8 * itemSize;
-    }
-    return itemData.map(getChildSize).reduce((a, b) => a + b, 0);
-  };
-
-  const gridRef = useResetCache(itemCount);
-
-  return (
-    <div ref={ref}>
-      <OuterElementContext.Provider value={other}>
-        <VariableSizeList
-          itemData={itemData}
-          height={getHeight() + 2 * LISTBOX_PADDING}
-          width="100%"
-          ref={gridRef}
-          outerElementType={OuterElementType}
-          innerElementType="ul"
-          itemSize={(index) => getChildSize(itemData[index])}
-          overscanCount={5}
-          itemCount={itemCount}
-        >
-          {renderRow}
-        </VariableSizeList>
-      </OuterElementContext.Provider>
-    </div>
-  );
-});
-
-const StyledPopper = styled(Popper)({
-  [`& .${autocompleteClasses.listbox}`]: {
-    boxSizing: "border-box",
-    "& ul": {
-      padding: 0,
-      margin: 0,
-    },
-  },
-});
 
 export default Home;
