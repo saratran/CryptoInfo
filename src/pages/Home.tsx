@@ -146,38 +146,4 @@ const Home: FC = () => {
   );
 };
 
-const LISTBOX_PADDING = 8; // px
-
-function renderRow(props: ListChildComponentProps) {
-  const { data, index, style } = props;
-  const dataSet = data[index];
-  const inlineStyle = {
-    ...style,
-    top: (style.top as number) + LISTBOX_PADDING,
-  };
-
-  return (
-    <Typography component="li" {...dataSet[0]} noWrap style={inlineStyle}>
-      {dataSet[1].name}
-    </Typography>
-  );
-}
-
-const OuterElementContext = React.createContext({});
-
-const OuterElementType = React.forwardRef<HTMLDivElement>((props, ref) => {
-  const outerProps = React.useContext(OuterElementContext);
-  return <div ref={ref} {...props} {...outerProps} />;
-});
-
-function useResetCache(data: any) {
-  const ref = React.useRef<VariableSizeList>(null);
-  React.useEffect(() => {
-    if (ref.current != null) {
-      ref.current.resetAfterIndex(0, true);
-    }
-  }, [data]);
-  return ref;
-}
-
 export default Home;
