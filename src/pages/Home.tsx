@@ -1,14 +1,11 @@
 import FilterListIcon from "@mui/icons-material/FilterList";
 import {
-  Autocomplete,
   autocompleteClasses,
   Button,
   CircularProgress,
   Collapse,
-  ListSubheader,
   Paper,
   Popper,
-  TextField,
   Typography,
   useMediaQuery,
   useTheme,
@@ -17,6 +14,7 @@ import { styled } from "@mui/styles";
 import React, { FC, useEffect, useState } from "react";
 import { ListChildComponentProps, VariableSizeList } from "react-window";
 import { getCoins, getCoinSimple } from "../api/CoinGeckoApi";
+import CoinFilter from "../components/CoinFilter";
 import CoinList from "../components/CoinList";
 import NavBar from "../components/NavBar";
 import "./styles/Home.css";
@@ -26,7 +24,6 @@ const Home: FC = () => {
   const [coins, setCoins] = useState<Array<any>>([]);
   const [isLoadingCoins, setIsLoadingCoins] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
-  const [coinFilters, setCoinFilters] = useState<Array<string>>([]);
   const [allCoins, setAllCoins] = useState<Array<any>>([]);
   const [isLoadingCoinSymbols, setIsLoadingCoinSymbols] = useState(false);
   const [pageState, setPageState] = useState<{
@@ -78,7 +75,7 @@ const Home: FC = () => {
     setShowFilter(!showFilter);
   }
 
-  function handleFilterApply() {
+  function handleFilterApply(coinFilters: Array<string>) {
     setCoins([]);
     setPageState({ currentPage: 1, coinFilters: coinFilters });
   }
@@ -100,42 +97,11 @@ const Home: FC = () => {
         </Button>
         <Collapse in={showFilter}>
           <Paper style={{ padding: 20 }}>
-            <Autocomplete
-              multiple
-              id="tags-standard"
-              options={allCoins}
-              filterSelectedOptions
-              getOptionLabel={(option) => option.name}
-              isOptionEqualToValue={(option, value) => option.id === value.id}
-              onChange={(event: any, newValue: Array<any>) => {
-                if (newValue) setCoinFilters(newValue.map((value) => value.id));
-              }}
-              loading={isLoadingCoinSymbols}
-              style={{ width: 500 }}
-              disableListWrap
-              PopperComponent={StyledPopper}
-              ListboxComponent={ListboxComponent}
-              renderOption={(props, option) => [props, option]}
-              renderGroup={(params) => params}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  variant="standard"
-                  label="Coin names"
-                  placeholder="e.g. bitcoin"
-                />
-              )}
+            <CoinFilter
+              coins={allCoins}
+              isLoadingCoins={isLoadingCoinSymbols}
+              handleFilterApply={handleFilterApply}
             />
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleFilterApply}
-              style={{
-                marginTop: 20,
-              }}
-            >
-              Apply
-            </Button>
           </Paper>
         </Collapse>
         <CoinList coins={coins} />
