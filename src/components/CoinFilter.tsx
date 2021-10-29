@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 });
 
 interface CoinFilterProp {
-  coins: Array<any>;
+  coins: CoinSimple[];
   isLoadingCoins: boolean;
   handleFilterApply: (coins: Array<string>) => void;
 }
@@ -50,7 +50,7 @@ const CoinFilter: FC<CoinFilterProp> = ({
         filterSelectedOptions
         getOptionLabel={(option) => option.name}
         isOptionEqualToValue={(option, value) => option.id === value.id}
-        onChange={(event: any, newValue: Array<any>) => {
+        onChange={(event: any, newValue) => {
           if (newValue) setCoinFilters(newValue.map((value) => value.id));
         }}
         loading={isLoadingCoins}

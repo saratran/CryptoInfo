@@ -20,16 +20,21 @@ axiosRetry(_axios.create(), {
   // retry on Network Error & 5xx responses
   retryCondition: axiosRetry.isRetryableError,
 });
-export const getCoinSimple = () => {
-  return coinGeckoApiBase.get("/coins/list");
+export const getCoinSimple = async (): Promise<CoinSimple[]> => {
+  return (await coinGeckoApiBase.get("/coins/list")).data;
 };
 
-export const getCoins = (page: number = 1, coinIds: Array<string> = []) => {
-  return coinGeckoApiBase.get(`/coins/markets`, {
-    params: {
-      vs_currency: "usd",
-      page,
-      ids: coinIds.join(","),
-    },
-  });
+export const getCoins = async (
+  page: number = 1,
+  coinIds: string[] = []
+): Promise<Coin[]> => {
+  return (
+    await coinGeckoApiBase.get(`/coins/markets`, {
+      params: {
+        vs_currency: "usd",
+        page,
+        ids: coinIds.join(","),
+      },
+    })
+  ).data;
 };

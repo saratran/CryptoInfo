@@ -3,7 +3,7 @@ import { act } from "react-dom/test-utils";
 import ReactDOM from "react-dom";
 import CoinList from "../CoinList";
 
-const COINS_MOCK = [
+const COINS_MOCK: Coin[] = [
   {
     id: "bitcoin",
     symbol: "btc",

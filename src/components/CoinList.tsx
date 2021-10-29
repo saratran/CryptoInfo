@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 });
 
 interface CoinListProp {
-  coins: Array<any>;
+  coins: Coin[];
 }
 
 const CoinList: FC<CoinListProp> = ({ coins }) => {
@@ -106,10 +106,14 @@ const CoinList: FC<CoinListProp> = ({ coins }) => {
                   align="right"
                   style={{
                     color:
-                      item.price_change_percentage_24h < 0 ? "red" : "green",
+                      item.price_change_percentage_24h &&
+                      item.price_change_percentage_24h < 0
+                        ? "red"
+                        : "green",
                   }}
                 >
-                  {item.price_change_percentage_24h}%
+                  {item.price_change_percentage_24h &&
+                    `${item.price_change_percentage_24h}%`}
                 </TableCell>
               </TableRow>
             ))}
