@@ -6,7 +6,7 @@ import "./index.css";
 import Routes from "./routes";
 import { theme } from "./theme";
 require("dotenv").config();
-
+console.log(process.env.BASENAME);
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
