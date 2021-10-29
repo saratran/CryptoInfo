@@ -22,7 +22,6 @@ jobs:
     env:
       CI: false
       PUBLIC_URL: "https://saratran.github.io/CryptoInfo"
-      BASENAME: "/CryptoInfo"
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
@@ -32,6 +31,8 @@ jobs:
         working-directory: .
       - name: Deploy page
         uses: peaceiris/actions-gh-pages@v3
+        env:
+          BASENAME: "/CryptoInfo"
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
