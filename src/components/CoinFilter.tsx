@@ -45,7 +45,7 @@ const CoinFilter: FC<CoinFilterProp> = ({
       <Autocomplete
         className={classes.autoComplete}
         multiple
-        id="tags-standard"
+        data-testid="coin-names-input"
         options={coins}
         filterSelectedOptions
         getOptionLabel={(option) => option.name}

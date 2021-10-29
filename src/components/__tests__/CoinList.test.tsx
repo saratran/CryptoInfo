@@ -2,6 +2,7 @@ import { render, screen, fireEvent, getByText } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import ReactDOM from "react-dom";
 import CoinList from "../CoinList";
+import renderer from "react-test-renderer";
 
 const COINS_MOCK: Coin[] = [
   {
@@ -160,6 +161,11 @@ test("Renders <CoinList/> in DOM without errors", () => {
   act(() => {
     ReactDOM.render(<CoinList coins={COINS_MOCK} />, div);
   });
+});
+
+test("Renders <CoinList/> correctly against snapshot", () => {
+  const tree = renderer.create(<CoinList coins={COINS_MOCK} />).toJSON();
+  expect(tree).toMatchSnapshot();
 });
 
 test("<CoinList/> should render coin names", async () => {
