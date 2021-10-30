@@ -21,20 +21,29 @@ axiosRetry(_axios.create(), {
   retryCondition: axiosRetry.isRetryableError,
 });
 export const getCoinSimple = async (): Promise<CoinSimple[]> => {
-  return (await coinGeckoApiBase.get("/coins/list")).data;
+  // return (await coinGeckoApiBase.get("/coins/list")).data;
+  return coinGeckoApiBase
+    .get("/coins/list")
+    .then((res) => res.data)
+    .catch((err) => {
+      throw err;
+    });
 };
 
 export const getCoins = async (
   page: number = 1,
   coinIds: string[] = []
 ): Promise<Coin[]> => {
-  return (
-    await coinGeckoApiBase.get(`/coins/markets`, {
+  return coinGeckoApiBase
+    .get(`/coins/markets`, {
       params: {
         vs_currency: "usd",
         page,
         ids: coinIds.join(","),
       },
     })
-  ).data;
+    .then((res) => res.data)
+    .catch((err) => {
+      throw err;
+    });
 };

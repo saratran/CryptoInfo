@@ -3,13 +3,10 @@ import {
   Button,
   CircularProgress,
   Collapse,
-  Paper,
   Typography,
   useTheme,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import React, { FC, useEffect, useState } from "react";
-import { ListChildComponentProps, VariableSizeList } from "react-window";
+import React, { FC, useEffect, useState, useRef } from "react";
 import { getCoins, getCoinSimple } from "../api/CoinGeckoApi";
 import CoinFilter from "../components/CoinFilter";
 import CoinList from "../components/CoinList";
@@ -19,11 +16,15 @@ import "./styles/Home.css";
 const Home: FC = () => {
   const theme = useTheme();
   const [coins, setCoins] = useState<Coin[]>([]);
-  const [isLoadingCoins, setIsLoadingCoins] = useState(false);
+  // const [isLoadingCoins, setIsLoadingCoins] = useState(false);
+  const [loading, setLoading] = useState({
+    isLoading: false,
+    error: false,
+  });
   const [showFilter, setShowFilter] = useState(false);
   const [allCoins, setAllCoins] = useState<CoinSimple[]>([]);
-  const [isLoadingCoinSymbols, setIsLoadingCoinSymbols] = useState(false);
-  const [pageState, setPageState] = useState<{
+  const [isLoadingAllCoins, setIsLoadingAllCoins] = useState(false);
+  const pageState = useRef<{
     currentPage: number;
     coinFilters: Array<string>;
   }>({
@@ -31,23 +32,39 @@ const Home: FC = () => {
     coinFilters: [],
   });
 
-  useEffect(() => {
-    setIsLoadingCoins(true);
-    getCoins(pageState.currentPage, pageState.coinFilters)
+  const getCoinsData = async (pageState: {
+    currentPage: number;
+    coinFilters: Array<string>;
+  }) => {
+    setLoading({
+      isLoading: true,
+      error: false,
+    });
+
+    return getCoins(pageState.currentPage, pageState.coinFilters)
       .then((res) => {
-        setCoins([...coins, ...res]);
+        setCoins((coins) => [...coins, ...res]);
+        setLoading({
+          isLoading: false,
+          error: false,
+        });
       })
       .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setIsLoadingCoins(false);
+        setLoading({
+          isLoading: false,
+          error: true,
+        });
+        throw err;
       });
-  }, [pageState]);
+  };
+
+  useEffect(() => {
+    getCoinsData(pageState.current);
+  }, []);
 
   useEffect(() => {
     // Get a list of coin symbols to use in autocomplete filter
-    setIsLoadingCoinSymbols(true);
+    setIsLoadingAllCoins(true);
     getCoinSimple()
       .then((res) => {
         setAllCoins(
@@ -58,12 +75,26 @@ const Home: FC = () => {
         console.log(err);
       })
       .finally(() => {
-        setIsLoadingCoinSymbols(false);
+        setIsLoadingAllCoins(false);
       });
   }, []);
 
   function handleClickMore() {
-    setPageState({ ...pageState, currentPage: pageState.currentPage + 1 });
+    pageState.current = {
+      ...pageState.current,
+      currentPage: pageState.current.currentPage + 1,
+    };
+
+    getCoinsData(pageState.current).catch((err) => {
+      pageState.current = {
+        ...pageState.current,
+        currentPage: pageState.current.currentPage - 1,
+      };
+    });
+  }
+
+  function handleRetry() {
+    getCoinsData(pageState.current);
   }
 
   function handleReturnTop() {
@@ -71,13 +102,87 @@ const Home: FC = () => {
   }
 
   function handleFilterClick() {
-    setShowFilter(!showFilter);
+    setShowFilter((showFilter) => !showFilter);
   }
 
   function handleFilterApply(coinFilters: Array<string>) {
     setCoins([]);
-    setPageState({ currentPage: 1, coinFilters: coinFilters });
+    pageState.current = { currentPage: 1, coinFilters: coinFilters };
+    console.log(pageState.current);
+    getCoinsData(pageState.current);
   }
+
+  const pageContent = () => {
+    if (loading.error) {
+      return (
+        <div
+          style={{
+            marginTop: 30,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant="body1" align="center">
+            <div>Something went wrong. Please try again.</div>
+          </Typography>
+          <Button
+            sx={{
+              marginTop: 3,
+              marginLeft: "auto",
+              marginRight: "auto",
+              display: "block",
+            }}
+            variant="contained"
+            color="primary"
+            onClick={handleRetry}
+          >
+            Retry
+          </Button>
+        </div>
+      );
+    }
+
+    if (loading.isLoading) {
+      return (
+        <CircularProgress
+          color="secondary"
+          sx={{
+            marginTop: 0,
+            marginBottom: 0,
+            marginLeft: "auto",
+            marginRight: "auto",
+            display: "block",
+          }}
+        />
+      );
+    } else {
+      return (
+        <>
+          <Button
+            sx={{
+              marginLeft: "auto",
+              marginRight: "auto",
+              display: "block",
+            }}
+            variant="contained"
+            color="primary"
+            onClick={handleClickMore}
+          >
+            Load more
+          </Button>
+          <Button
+            sx={{ marginTop: 5, float: "right" }}
+            variant="outlined"
+            color="primary"
+            onClick={handleReturnTop}
+          >
+            {"<- Return to top 100"}
+          </Button>
+        </>
+      );
+    }
+  };
 
   return (
     <div className="main">
@@ -97,44 +202,12 @@ const Home: FC = () => {
         <Collapse in={showFilter}>
           <CoinFilter
             coins={allCoins}
-            isLoadingCoins={isLoadingCoinSymbols}
+            isLoadingCoins={isLoadingAllCoins}
             handleFilterApply={handleFilterApply}
           />
         </Collapse>
         <CoinList coins={coins} />
-        {isLoadingCoins ? (
-          <CircularProgress
-            color="secondary"
-            sx={{
-              marginTop: 0,
-              marginBottom: 0,
-              marginLeft: "auto",
-              marginRight: "auto",
-              display: "block",
-            }}
-          />
-        ) : (
-          <Button
-            sx={{
-              marginLeft: "auto",
-              marginRight: "auto",
-              display: "block",
-            }}
-            variant="contained"
-            color="primary"
-            onClick={handleClickMore}
-          >
-            Load more
-          </Button>
-        )}
-        <Button
-          sx={{ marginTop: 5, float: "right" }}
-          variant="outlined"
-          color="primary"
-          onClick={handleReturnTop}
-        >
-          {"<- Return to top 100"}
-        </Button>
+        {pageContent()}
       </div>
     </div>
   );
