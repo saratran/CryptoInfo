@@ -8,20 +8,20 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
     className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableContainer-root css-11xur9t-MuiPaper-root-MuiTableContainer-root"
   >
     <table
-      className="MuiTable-root MuiTable-stickyHeader makeStyles-table-3 css-xn82ks-MuiTable-root"
+      className="MuiTable-root MuiTable-stickyHeader css-xn82ks-MuiTable-root"
       role={null}
     >
       <div
-        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableHead-root makeStyles-thead-5 css-vjohu7-MuiPaper-root-MuiTableHead-root"
+        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableHead-root css-vjohu7-MuiPaper-root-MuiTableHead-root"
         role="rowgroup"
       >
         <tr
-          className="MuiTableRow-root MuiTableRow-head makeStyles-headerRow-8 css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root MuiTableRow-head makeStyles-headerRow-3 css-1q1u3t4-MuiTableRow-root"
           role={null}
         >
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium makeStyles-headerCell-9 css-y8ay40-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium makeStyles-headerCell-4 css-y8ay40-MuiTableCell-root"
             scope="col"
             width={4}
           >
@@ -29,7 +29,7 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium makeStyles-headerCell-9 css-y8ay40-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium makeStyles-headerCell-4 css-y8ay40-MuiTableCell-root"
             scope="col"
             width={200}
           >
@@ -37,35 +37,35 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium makeStyles-headerCell-9 css-y8ay40-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeMedium makeStyles-headerCell-4 css-y8ay40-MuiTableCell-root"
             scope="col"
           >
             Symbol
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium makeStyles-headerCell-9 css-i02g0k-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium makeStyles-headerCell-4 css-i02g0k-MuiTableCell-root"
             scope="col"
           >
             Current Price (USD)
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium makeStyles-headerCell-9 css-i02g0k-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium makeStyles-headerCell-4 css-i02g0k-MuiTableCell-root"
             scope="col"
           >
             Market Cap (USD)
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium makeStyles-headerCell-9 css-i02g0k-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium makeStyles-headerCell-4 css-i02g0k-MuiTableCell-root"
             scope="col"
           >
             Circulating Supply
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium makeStyles-headerCell-9 css-i02g0k-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeMedium makeStyles-headerCell-4 css-i02g0k-MuiTableCell-root"
             scope="col"
           >
             %24h
@@ -73,16 +73,16 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
         </tr>
       </div>
       <tbody
-        className="MuiTableBody-root makeStyles-tbody-6 css-apqrd9-MuiTableBody-root"
+        className="MuiTableBody-root css-apqrd9-MuiTableBody-root"
         role={null}
       >
         <tr
-          className="MuiTableRow-root makeStyles-row-7 css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root makeStyles-row-2 css-1q1u3t4-MuiTableRow-root"
           role={null}
         >
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium makeStyles-headerCell-9 css-1ex1afd-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium makeStyles-headerCell-4 css-1ex1afd-MuiTableCell-root"
             scope="row"
             style={
               Object {
@@ -97,6 +97,7 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
           >
             <img
+              alt="Bitcoin icon"
               src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
               style={
                 Object {
@@ -118,23 +119,19 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            $
-            60,810
+            $60,810
           </td>
           <td
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            $
-            1,146,941,048,948
+            $1,146,941,048,948
           </td>
           <td
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            18,857,718
-             
-            BTC
+            18,857,718 BTC
           </td>
           <td
             aria-sort={null}
@@ -145,16 +142,16 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
               }
             }
           >
-            0.99622%
+            0.996%
           </td>
         </tr>
         <tr
-          className="MuiTableRow-root makeStyles-row-7 css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root makeStyles-row-2 css-1q1u3t4-MuiTableRow-root"
           role={null}
         >
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium makeStyles-headerCell-9 css-1ex1afd-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium makeStyles-headerCell-4 css-1ex1afd-MuiTableCell-root"
             scope="row"
             style={
               Object {
@@ -169,6 +166,7 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
           >
             <img
+              alt="Ethereum icon"
               src="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880"
               style={
                 Object {
@@ -190,23 +188,19 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            $
-            4,321
+            $4,321
           </td>
           <td
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            $
-            510,632,823,504
+            $510,632,823,504
           </td>
           <td
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            118,122,032.999
-             
-            ETH
+            118,122,032.999 ETH
           </td>
           <td
             aria-sort={null}
@@ -217,16 +211,16 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
               }
             }
           >
-            4.82238%
+            4.822%
           </td>
         </tr>
         <tr
-          className="MuiTableRow-root makeStyles-row-7 css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root makeStyles-row-2 css-1q1u3t4-MuiTableRow-root"
           role={null}
         >
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium makeStyles-headerCell-9 css-1ex1afd-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium makeStyles-headerCell-4 css-1ex1afd-MuiTableCell-root"
             scope="row"
             style={
               Object {
@@ -241,6 +235,7 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
           >
             <img
+              alt="Binance Coin icon"
               src="https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png?1547034615"
               style={
                 Object {
@@ -262,23 +257,19 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            $
-            494.81
+            $494.81
           </td>
           <td
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            $
-            83,187,309,373
+            $83,187,309,373
           </td>
           <td
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            168,137,035.9
-             
-            BNB
+            168,137,035.9 BNB
           </td>
           <td
             aria-sort={null}
@@ -289,16 +280,16 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
               }
             }
           >
-            3.5427%
+            3.543%
           </td>
         </tr>
         <tr
-          className="MuiTableRow-root makeStyles-row-7 css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root makeStyles-row-2 css-1q1u3t4-MuiTableRow-root"
           role={null}
         >
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium makeStyles-headerCell-9 css-1ex1afd-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium makeStyles-headerCell-4 css-1ex1afd-MuiTableCell-root"
             scope="row"
             style={
               Object {
@@ -313,6 +304,7 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
           >
             <img
+              alt="Tether icon"
               src="https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707"
               style={
                 Object {
@@ -334,23 +326,19 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            $
-            1
+            $1
           </td>
           <td
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            $
-            71,030,646,340
+            $71,030,646,340
           </td>
           <td
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            70,932,110,814.757
-             
-            USDT
+            70,932,110,814.757 USDT
           </td>
           <td
             aria-sort={null}
@@ -361,16 +349,16 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
               }
             }
           >
-            -0.98831%
+            -0.988%
           </td>
         </tr>
         <tr
-          className="MuiTableRow-root makeStyles-row-7 css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root makeStyles-row-2 css-1q1u3t4-MuiTableRow-root"
           role={null}
         >
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium makeStyles-headerCell-9 css-1ex1afd-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium makeStyles-headerCell-4 css-1ex1afd-MuiTableCell-root"
             scope="row"
             style={
               Object {
@@ -385,6 +373,7 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
           >
             <img
+              alt="Cardano icon"
               src="https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860"
               style={
                 Object {
@@ -406,23 +395,19 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            $
-            2
+            $2
           </td>
           <td
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            $
-            64,013,397,550
+            $64,013,397,550
           </td>
           <td
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
           >
-            32,066,390,668.414
-             
-            ADA
+            32,066,390,668.414 ADA
           </td>
           <td
             aria-sort={null}
@@ -433,7 +418,7 @@ exports[`Renders <CoinList/> correctly against snapshot 1`] = `
               }
             }
           >
-            -1.16195%
+            -1.162%
           </td>
         </tr>
       </tbody>

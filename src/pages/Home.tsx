@@ -23,7 +23,7 @@ const Home: FC = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [allCoins, setAllCoins] = useState<CoinSimple[]>([]);
   const [isLoadingAllCoins, setIsLoadingAllCoins] = useState(false);
-  const pageState = useRef<{
+  const [pageState, setPageState] = useState<{
     currentPage: number;
     coinFilters: Array<string>;
   }>({
@@ -36,7 +36,6 @@ const Home: FC = () => {
     coinFilters: Array<string>;
   }) => {
     // Get a list of coins and their details
-
     setLoading({
       isLoading: true,
       error: false,
@@ -61,8 +60,10 @@ const Home: FC = () => {
 
   useEffect(() => {
     // Get a list of coins and their details
-    getCoinsData(pageState.current);
+    getCoinsData(pageState);
+  }, [pageState]);
 
+  useEffect(() => {
     // Get a list of all coins to use in autocomplete filter
     setIsLoadingAllCoins(true);
 
@@ -82,22 +83,14 @@ const Home: FC = () => {
 
   function handleClickMore() {
     // Increment page count
-    pageState.current = {
-      ...pageState.current,
-      currentPage: pageState.current.currentPage + 1,
-    };
-
-    getCoinsData(pageState.current).catch((err) => {
-      // In case of error, revert the page count
-      pageState.current = {
-        ...pageState.current,
-        currentPage: pageState.current.currentPage - 1,
-      };
-    });
+    setPageState((state) => ({
+      ...state,
+      currentPage: state.currentPage + 1,
+    }));
   }
 
   function handleRetry() {
-    getCoinsData(pageState.current);
+    getCoinsData(pageState);
   }
 
   function handleReturnTop() {
@@ -110,8 +103,10 @@ const Home: FC = () => {
 
   function handleFilterApply(coinFilters: Array<string>) {
     setCoins([]);
-    pageState.current = { currentPage: 1, coinFilters: coinFilters };
-    getCoinsData(pageState.current);
+    setPageState({
+      currentPage: 1,
+      coinFilters: coinFilters,
+    });
   }
 
   const pageContent = () => {
