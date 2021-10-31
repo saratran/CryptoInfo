@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Cryptocurrency Information App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React App to display information about different cryptocurrencies based on CoinGecko API
 
 ## Available Scripts
 

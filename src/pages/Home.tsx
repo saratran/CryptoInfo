@@ -16,7 +16,6 @@ import "./styles/Home.css";
 const Home: FC = () => {
   const theme = useTheme();
   const [coins, setCoins] = useState<Coin[]>([]);
-  // const [isLoadingCoins, setIsLoadingCoins] = useState(false);
   const [loading, setLoading] = useState({
     isLoading: false,
     error: false,
@@ -36,6 +35,8 @@ const Home: FC = () => {
     currentPage: number;
     coinFilters: Array<string>;
   }) => {
+    // Get a list of coins and their details
+
     setLoading({
       isLoading: true,
       error: false,
@@ -59,12 +60,12 @@ const Home: FC = () => {
   };
 
   useEffect(() => {
+    // Get a list of coins and their details
     getCoinsData(pageState.current);
-  }, []);
 
-  useEffect(() => {
-    // Get a list of coin symbols to use in autocomplete filter
+    // Get a list of all coins to use in autocomplete filter
     setIsLoadingAllCoins(true);
+
     getCoinSimple()
       .then((res) => {
         setAllCoins(
@@ -80,12 +81,14 @@ const Home: FC = () => {
   }, []);
 
   function handleClickMore() {
+    // Increment page count
     pageState.current = {
       ...pageState.current,
       currentPage: pageState.current.currentPage + 1,
     };
 
     getCoinsData(pageState.current).catch((err) => {
+      // In case of error, revert the page count
       pageState.current = {
         ...pageState.current,
         currentPage: pageState.current.currentPage - 1,
@@ -108,7 +111,6 @@ const Home: FC = () => {
   function handleFilterApply(coinFilters: Array<string>) {
     setCoins([]);
     pageState.current = { currentPage: 1, coinFilters: coinFilters };
-    console.log(pageState.current);
     getCoinsData(pageState.current);
   }
 
@@ -171,14 +173,6 @@ const Home: FC = () => {
           >
             Load more
           </Button>
-          <Button
-            sx={{ marginTop: 5, float: "right" }}
-            variant="outlined"
-            color="primary"
-            onClick={handleReturnTop}
-          >
-            {"<- Return to top 100"}
-          </Button>
         </>
       );
     }
@@ -208,6 +202,14 @@ const Home: FC = () => {
         </Collapse>
         <CoinList coins={coins} />
         {pageContent()}
+        <Button
+          sx={{ marginTop: 5, float: "right" }}
+          variant="outlined"
+          color="primary"
+          onClick={handleReturnTop}
+        >
+          {"<- Return to top 100"}
+        </Button>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ type CoinSimple = {
 
 type Coin = CoinSimple & {
   image: string;
-  current_price: number;
+  current_price: number | null;
   market_cap: number;
   market_cap_rank: number;
   fully_diluted_valuation: number | null;

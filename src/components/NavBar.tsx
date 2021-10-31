@@ -1,6 +1,6 @@
 import { Typography, useTheme } from "@mui/material";
 import React, { FC } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { routeLookup } from "../routes";
 import "./styles/NavBar.css";
 
@@ -9,9 +9,6 @@ const NavBar: FC = () => {
 
   return (
     <div className="top-bar">
-      {/* <Link to="/">
-        <div>HOME</div>
-      </Link> */}
       <nav>
         <div className="links">
           {routeLookup.map((r, i) => (

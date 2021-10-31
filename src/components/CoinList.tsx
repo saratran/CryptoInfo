@@ -9,18 +9,12 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { FC } from "react";
-import "./styles/NavBar.css";
 
 const useStyles = makeStyles({
   root: {
     marginTop: 20,
     marginBottom: 20,
   },
-  tableContainer: {},
-  table: {},
-  list: {},
-  thead: {},
-  tbody: {},
   row: {
     height: 40,
   },
@@ -43,8 +37,8 @@ const CoinList: FC<CoinListProp> = ({ coins }) => {
   return (
     <div className={classes.root}>
       <TableContainer component={Paper}>
-        <Table className={classes.table} stickyHeader>
-          <TableHead className={classes.thead} component={Paper}>
+        <Table stickyHeader>
+          <TableHead component={Paper}>
             <TableRow className={classes.headerRow}>
               <TableCell className={classes.headerCell} width={4}>
                 Rank
@@ -73,7 +67,7 @@ const CoinList: FC<CoinListProp> = ({ coins }) => {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody className={classes.tbody}>
+          <TableBody>
             {coins.map((item, i) => (
               <TableRow className={classes.row} key={i}>
                 <TableCell
@@ -87,20 +81,22 @@ const CoinList: FC<CoinListProp> = ({ coins }) => {
                 <TableCell>
                   <img
                     src={item.image}
+                    alt={`${item.name} icon`}
                     style={{ height: 20, width: 20, marginRight: 10 }}
                   />
                   {item.name}
                 </TableCell>
                 <TableCell align="left">{item.symbol.toUpperCase()}</TableCell>
                 <TableCell align="right">
-                  ${item.current_price.toLocaleString()}
+                  {item.current_price &&
+                    `$${item.current_price.toLocaleString()}`}
                 </TableCell>
                 <TableCell align="right">
-                  ${item.market_cap.toLocaleString()}
+                  {item.market_cap && `$${item.market_cap.toLocaleString()}`}
                 </TableCell>
                 <TableCell align="right">
-                  {item.circulating_supply.toLocaleString()}{" "}
-                  {item.symbol.toUpperCase()}
+                  {item.circulating_supply &&
+                    `${item.circulating_supply.toLocaleString()} ${item.symbol.toUpperCase()}`}
                 </TableCell>
                 <TableCell
                   align="right"
@@ -113,7 +109,7 @@ const CoinList: FC<CoinListProp> = ({ coins }) => {
                   }}
                 >
                   {item.price_change_percentage_24h &&
-                    `${item.price_change_percentage_24h}%`}
+                    `${item.price_change_percentage_24h.toFixed(3)}%`}
                 </TableCell>
               </TableRow>
             ))}
